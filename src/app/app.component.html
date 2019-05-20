@@ -1,20 +1,1594 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
+ <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner> -->
+<ngx-spinner
+bdOpacity = 0.4
+ bdColor="rgba(51,51,51,0.8)"
+size = "medium"
+color = "#9c99a9"
+type = "timer"
+[fullScreen] = "false"
+>
+<p style="color: white" > Downloading... </p>
+</ngx-spinner>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-right">
+        <button class="btn btn-outline-primary" (click)="open(content)">Print Preview</button>
+      <button type="button" class="btn btn-default" value="Print" (click)="capture2()">Print</button>
+    </div>
+    <div class="col-md-12 text-right">
+      <button type="button" class="btn btn-default" value="Print" (click)="captureScreen()"
+        [hidden]="isPriviewHidden">Print PDF</button>
+    </div>
+
+  </div>
+  <div class="row" id="headerPart" *ngIf="isShow">
+    <div class="col-md-12">
+      <app-header></app-header>
+    </div>
+  </div>
+  
+
+  <div class="row" id="contentToConvert" *ngIf="isShow">
+    <div class=" col-md-12 ">
+      <!-- <div class="row">
+        <div class="col-md-12">
+            <app-header></app-header>
+        </div>
+      </div> -->
+      
+      <div class="row marginbtm10">
+          <div class="col-md-12">
+              <div class="main-column row justify-content-between"> 
+                <div class="col-sm-6">
+                  <div class="row">
+                    <div class="col-sm-3">
+                    <img class="left-header" src="../assets/images/sample-report.png" alt="Sample Report">
+                    </div>
+                    <div class="col-sm-9">
+                      <div class="">
+                          <div class="column hd-blod">Sample Report</div>
+                          <div class="column hd-text">Industry (Financial Services)</div>
+                          <div  class="column  hd-text">Country (USA)</div>
+                      </div>
+                 
+                  </div>
+                </div>
+
+                </div>
+                <div class="col-sm-4 col-offset-sm-2">
+                    <img class="right-header " src="../assets/images/threat.png" alt="Threat Beta">
+
+                
+
+                    <img class="right-header1" src="../assets/images/New Project.png" alt="Threat Beta">
+                </div>
+                    
+                  
+              </div> 
+              
+          </div>
+          <div class="col-md-12">
+              <div style="margin: 15px 0;">
+                <h3>chart </h3>
+                <p-chart type="line"  height="100"  [data]="data" [options]="options"></p-chart>
+              </div>
+            </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <h1 class="number-head">280</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Number of Vulnerabilities?</div>
+              <div class="caption-text">Number of known vulnerable technologies that could impact threat beta </div>
+              <div class="border-btm"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+               <h1 class="number-head">6</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Potential Exploits?</div>
+              <div class="caption-text">Number of known vulnerabilities that assailants can exploit</div>
+              <div class="border-btm"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+               <h1 class="number-head">0.9</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Likelihood of attack?</div>
+              <div class="caption-text">Frequency of a cyber breach and/or BI Event affecting this organization during the next 12 months </div>
+              <div class="border-btm"></div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-3">
+               <h1 class="number-head">$1.8M</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Severity of financial losses?</div>
+              <div class="caption-text">Median probable loss</div>
+              <div class="border-btm"></div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-3">
+               <h1 class="number-head">250K</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Recommended Investments?</div>
+              <div class="caption-text">This is the amount of money that will greatly reduce overall threat beta and return the higher ROI</div>
+              <div class="border-btm"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+               <h1 class="number-head">37%</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Estimated ROI?</div>
+              <div class="caption-text">Return on investment from spending the estimated budget amount to lower the threat beta </div>
+              <div class="border-btm"></div>
+            </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="method-note">
+                <h4>Methodology Note</h4>
+                <p>Cybeta uses relative risks criteria to evaluate enterprises from an attackers point of view. This technique generates actionable recommendations for any public, private, or foreign company in the world in near real time.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="row summary-panel">
+              <div class="col-md-12">
+                  <div class="cont-cls">
+                    <div class="title-cont"><h4>Summary</h4></div>
+                    <div class="header-cont">
+                      <h4>Vulnerabilities:</h4>
+                    </div>
+                    <div class="cont-text">
+                        A Threat Beta of 1.6 means that Sample is at a high risk of cyber attack. The likelihood of an attack happening in the next 12 months is 0.9. The potential losses from a large attack is $1,800,000. Over the last four years, Sample’s Threat Beta score has gone up from 0.6 to 1.6.
+                    </div>
+
+                    <div class="header-cont">
+                        <h4>Mitigation:</h4>
+                      </div>
+                      <div class="cont-text">
+                          Sample has 280 vulnerabilities. Spending $250,000 could help to lower Sample’s threat score enough to reduce uninsurable losses from $1,800,000 to $300,000 and produce a 37% return on investment.
+                      </div>
+
+
+                      <div class="header-cont">
+                          <h4>Urgency:</h4>
+                        </div>
+                        <div class="cont-text">
+                            Recent dark web chatter indicated that 9 of Sample’s 280 total vulnerabilities could be exploited in the next 12 months. The insurance mitigation recommendations will take one month to implement while the investments will take 6 months to implement. 
+                        </div>
+                  </div>
+              </div>
+            </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="row marginbtm20">
+          <div class="col-md-12">
+              <div class="main-column row justify-content-between"> 
+                <div class="col-sm-6">
+                  <div class="row">
+                    <div class="col-sm-3">
+                    <img class="left-header" src="../assets/images/sample-report.png" alt="Sample Report">
+                    </div>
+                    <div class="col-sm-9">
+                      <div class="">
+                          <div class="column hd-blod">Sample Report</div>
+                          <div class="column hd-text">Industry (Financial Services)</div>
+                          <div  class="column  hd-text">Country (USA)</div>
+                      </div>
+                 
+                  </div>
+                </div>
+
+                </div>
+                <div class="col-sm-4 col-offset-sm-2">
+                    <img class="right-header " src="../assets/images/threat.png" alt="Threat Beta">
+
+                
+
+                    <img class="right-header1" src="../assets/images/New Project.png" alt="Threat Beta">
+                </div>
+                    
+                  
+              </div> 
+              
+          </div>
+          <div class="col-md-12">
+              <div style="margin: 15px 0;">
+                <h3>chart </h3>
+                <p-chart type="line"  height="100"  [data]="data" [options]="options"></p-chart>
+              </div>
+            </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <h1 class="number-head">280</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Number of Vulnerabilities?</div>
+              <div class="caption-text">Number of known vulnerable technologies that could impact threat beta </div>
+              <div class="border-btm"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+               <h1 class="number-head">6</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Potential Exploits?</div>
+              <div class="caption-text">Number of known vulnerabilities that assailants can exploit</div>
+              <div class="border-btm"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+               <h1 class="number-head">0.9</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Likelihood of attack?</div>
+              <div class="caption-text">Frequency of a cyber breach and/or BI Event affecting this organization during the next 12 months </div>
+              <div class="border-btm"></div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-3">
+               <h1 class="number-head">$1.8M</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Severity of financial losses?</div>
+              <div class="caption-text">Median probable loss</div>
+              <div class="border-btm"></div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-3">
+               <h1 class="number-head">250K</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Recommended Investments?</div>
+              <div class="caption-text">This is the amount of money that will greatly reduce overall threat beta and return the higher ROI</div>
+              <div class="border-btm"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+               <h1 class="number-head">37%</h1>
+            </div>
+            <div class="col-md-9">
+              <div class="head-text">Estimated ROI?</div>
+              <div class="caption-text">Return on investment from spending the estimated budget amount to lower the threat beta </div>
+              <div class="border-btm"></div>
+            </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="method-note">
+                <h4>Methodology Note</h4>
+                <p>Cybeta uses relative risks criteria to evaluate enterprises from an attackers point of view. This technique generates actionable recommendations for any public, private, or foreign company in the world in near real time.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="row summary-panel">
+              <div class="col-md-12">
+                  <div class="cont-cls">
+                    <div class="title-cont"><h4>Summary</h4></div>
+                    <div class="header-cont">
+                      <h4>Vulnerabilities:</h4>
+                    </div>
+                    <div class="cont-text">
+                        A Threat Beta of 1.6 means that Sample is at a high risk of cyber attack. The likelihood of an attack happening in the next 12 months is 0.9. The potential losses from a large attack is $1,800,000. Over the last four years, Sample’s Threat Beta score has gone up from 0.6 to 1.6.
+                    </div>
+
+                    <div class="header-cont">
+                        <h4>Mitigation:</h4>
+                      </div>
+                      <div class="cont-text">
+                          Sample has 280 vulnerabilities. Spending $250,000 could help to lower Sample’s threat score enough to reduce uninsurable losses from $1,800,000 to $300,000 and produce a 37% return on investment.
+                      </div>
+
+
+                      <div class="header-cont">
+                          <h4>Urgency:</h4>
+                        </div>
+                        <div class="cont-text">
+                            Recent dark web chatter indicated that 9 of Sample’s 280 total vulnerabilities could be exploited in the next 12 months. The insurance mitigation recommendations will take one month to implement while the investments will take 6 months to implement. 
+                        </div>
+                  </div>
+              </div>
+            </div>
+
+        </div>
+
+      </div>
+      <!-- <div class="row marginbtm10">
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            <strong>Html To PDF Conversion - Angular 1</strong>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h2>Content</h2>
+          <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+            ipsam quidem ea velit aliquam asperiores est sit consequatur nam </p>
+        </div>
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table id="tbl1" class="table">
+              <tr>
+                <th>Column1</th>
+                <th>Column2</th>
+                <th>Column3</th>
+              </tr>
+              <tr>
+                <td>Row 1</td>
+                <td>Row 1</td>
+                <td>Row 1</td>
+              </tr>
+              <tr>
+                <td>Row 2</td>
+                <td>Row 2</td>
+                <td>Row 2</td>
+              </tr>
+              <tr>
+                <td>Row 3</td>
+                <td>Row 3</td>
+                <td>Row 3</td>
+              </tr>
+              <tr>
+                <td>Row 4</td>
+                <td>Row 4</td>
+                <td>Row 4</td>
+              </tr>
+              <tr>
+                <td>Row 5</td>
+                <td>Row 5</td>
+                <td>Row 5</td>
+              </tr>
+              <tr>
+                <td>Row 6</td>
+                <td>Row 6</td>
+                <td>Row 6</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div style="">
+            <h3>chart </h3>
+            <p-chart type="line" [data]="data" [options]="options"></p-chart>
+          </div>
+        </div>
+
+
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            <strong>Html To PDF Conversion - Angular 2</strong>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h2>Content</h2>
+          <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+            hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+            ipsam quidem ea velit aliquam asperiores est sit consequatur nam</p>
+        </div>
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table id="tbl1" class="table">
+              <tr>
+                <th>Column1</th>
+                <th>Column2</th>
+                <th>Column3</th>
+              </tr>
+              <tr>
+                <td>Row 1</td>
+                <td>Row 1</td>
+                <td>Row 1</td>
+              </tr>
+              <tr>
+                <td>Row 2</td>
+                <td>Row 2</td>
+                <td>Row 2</td>
+              </tr>
+              <tr>
+                <td>Row 3</td>
+                <td>Row 3</td>
+                <td>Row 3</td>
+              </tr>
+              <tr>
+                <td>Row 4</td>
+                <td>Row 4</td>
+                <td>Row 4</td>
+              </tr>
+              <tr>
+                <td>Row 5</td>
+                <td>Row 5</td>
+                <td>Row 5</td>
+              </tr>
+              <tr>
+                <td>Row 6</td>
+                <td>Row 6</td>
+                <td>Row 6</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div style="">
+            <h3>chart </h3>
+            <p-chart type="line" [data]="data" [options]="options"></p-chart>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            <strong>Html To PDF Conversion - Angular 3</strong>
+          </div>
+        </div>
+
+
+
+
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table id="tbl1" class="table">
+              <tr>
+                <th>Column1</th>
+                <th>Column2</th>
+                <th>Column3</th>
+              </tr>
+              <tr>
+                <td>Row 1</td>
+                <td>Row 1</td>
+                <td>Row 1</td>
+              </tr>
+              <tr>
+                <td>Row 2</td>
+                <td>Row 2</td>
+                <td>Row 2</td>
+              </tr>
+              <tr>
+                <td>Row 3</td>
+                <td>Row 3</td>
+                <td>Row 3</td>
+              </tr>
+              <tr>
+                <td>Row 4</td>
+                <td>Row 4</td>
+                <td>Row 4</td>
+              </tr>
+              <tr>
+                <td>Row 5</td>
+                <td>Row 5</td>
+                <td>Row 5</td>
+              </tr>
+              <tr>
+                <td>Row 6</td>
+                <td>Row 6</td>
+                <td>Row 6</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div style="">
+            <h3>chart </h3>
+            <p-chart type="line" [data]="data" [options]="options"></p-chart>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="row">
+          <div class="col-md-12">
+               <app-footer></app-footer> 
+          </div>
+        </div> -->
+
+    </div>
+
+
+    <!-- <div class="col-md-12">
+      <div class="row marging4to6">
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            <strong>Html To PDF Conversion - Angular 4</strong>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h2>Content</h2>
+          <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+            hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+            ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+            consequatur id iste ut iure.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table id="tbl1" class="table">
+              <tr>
+                <th>Column1</th>
+                <th>Column2</th>
+                <th>Column3</th>
+              </tr>
+              <tr>
+                <td>Row 1</td>
+                <td>Row 1</td>
+                <td>Row 1</td>
+              </tr>
+              <tr>
+                <td>Row 2</td>
+                <td>Row 2</td>
+                <td>Row 2</td>
+              </tr>
+              <tr>
+                <td>Row 3</td>
+                <td>Row 3</td>
+                <td>Row 3</td>
+              </tr>
+              <tr>
+                <td>Row 4</td>
+                <td>Row 4</td>
+                <td>Row 4</td>
+              </tr>
+              <tr>
+                <td>Row 5</td>
+                <td>Row 5</td>
+                <td>Row 5</td>
+              </tr>
+              <tr>
+                <td>Row 6</td>
+                <td>Row 6</td>
+                <td>Row 6</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div style="">
+            <h3>chart </h3>
+            <p-chart type="line" [data]="data" [options]="options"></p-chart>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            <strong>Html To PDF Conversion - Angular 5</strong>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h2>Content</h2>
+          <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+            hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+            ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+            consequatur id iste ut iure.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table id="tbl1" class="table">
+              <tr>
+                <th>Column1</th>
+                <th>Column2</th>
+                <th>Column3</th>
+              </tr>
+              <tr>
+                <td>Row 1</td>
+                <td>Row 1</td>
+                <td>Row 1</td>
+              </tr>
+              <tr>
+                <td>Row 2</td>
+                <td>Row 2</td>
+                <td>Row 2</td>
+              </tr>
+              <tr>
+                <td>Row 3</td>
+                <td>Row 3</td>
+                <td>Row 3</td>
+              </tr>
+              <tr>
+                <td>Row 4</td>
+                <td>Row 4</td>
+                <td>Row 4</td>
+              </tr>
+              <tr>
+                <td>Row 5</td>
+                <td>Row 5</td>
+                <td>Row 5</td>
+              </tr>
+              <tr>
+                <td>Row 6</td>
+                <td>Row 6</td>
+                <td>Row 6</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div style="">
+            <h3>chart </h3>
+            <p-chart type="line" [data]="data" [options]="options"></p-chart>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            <strong>Html To PDF Conversion - Angular 6</strong>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table id="tbl1" class="table">
+              <tr>
+                <th>Column1</th>
+                <th>Column2</th>
+                <th>Column3</th>
+              </tr>
+              <tr>
+                <td>Row 1</td>
+                <td>Row 1</td>
+                <td>Row 1</td>
+              </tr>
+              <tr>
+                <td>Row 2</td>
+                <td>Row 2</td>
+                <td>Row 2</td>
+              </tr>
+              <tr>
+                <td>Row 3</td>
+                <td>Row 3</td>
+                <td>Row 3</td>
+              </tr>
+              <tr>
+                <td>Row 4</td>
+                <td>Row 4</td>
+                <td>Row 4</td>
+              </tr>
+              <tr>
+                <td>Row 5</td>
+                <td>Row 5</td>
+                <td>Row 5</td>
+              </tr>
+
+            </table>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div style="">
+            <h3>chart </h3>
+            <p-chart type="line" [data]="data" [options]="options"></p-chart>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+<!-- 
+    <div class="row marging7to9">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="alert alert-info">
+              <strong>Html To PDF Conversion - Angular 7</strong>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <h2>Content</h2>
+            <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+              hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+              ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+              consequatur id iste ut iure.</p>
+          </div>
+          <div class="col-md-6">
+            <div class="table-responsive">
+              <table id="tbl1" class="table">
+                <tr>
+                  <th>Column1</th>
+                  <th>Column2</th>
+                  <th>Column3</th>
+                </tr>
+                <tr>
+                  <td>Row 1</td>
+                  <td>Row 1</td>
+                  <td>Row 1</td>
+                </tr>
+                <tr>
+                  <td>Row 2</td>
+                  <td>Row 2</td>
+                  <td>Row 2</td>
+                </tr>
+                <tr>
+                  <td>Row 3</td>
+                  <td>Row 3</td>
+                  <td>Row 3</td>
+                </tr>
+                <tr>
+                  <td>Row 4</td>
+                  <td>Row 4</td>
+                  <td>Row 4</td>
+                </tr>
+                <tr>
+                  <td>Row 5</td>
+                  <td>Row 5</td>
+                  <td>Row 5</td>
+                </tr>
+                <tr>
+                  <td>Row 6</td>
+                  <td>Row 6</td>
+                  <td>Row 6</td>
+                </tr>
+              </table>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div style="">
+              <h3>chart </h3>
+              <p-chart type="line" [data]="data" [options]="options"></p-chart>
+            </div>
+          </div>
+
+
+
+          <div class="col-md-12">
+            <div class="alert alert-info">
+              <strong>Html To PDF Conversion - Angular 8</strong>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <h2>Content</h2>
+            <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+              hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+              ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+              consequatur id iste ut iure.</p>
+          </div>
+          <div class="col-md-6">
+            <div class="table-responsive">
+              <table id="tbl1" class="table">
+                <tr>
+                  <th>Column1</th>
+                  <th>Column2</th>
+                  <th>Column3</th>
+                </tr>
+                <tr>
+                  <td>Row 1</td>
+                  <td>Row 1</td>
+                  <td>Row 1</td>
+                </tr>
+                <tr>
+                  <td>Row 2</td>
+                  <td>Row 2</td>
+                  <td>Row 2</td>
+                </tr>
+                <tr>
+                  <td>Row 3</td>
+                  <td>Row 3</td>
+                  <td>Row 3</td>
+                </tr>
+                <tr>
+                  <td>Row 4</td>
+                  <td>Row 4</td>
+                  <td>Row 4</td>
+                </tr>
+                <tr>
+                  <td>Row 5</td>
+                  <td>Row 5</td>
+                  <td>Row 5</td>
+                </tr>
+
+              </table>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div style="">
+              <h3>chart </h3>
+              <p-chart type="line" [data]="data" [options]="options"></p-chart>
+            </div>
+          </div>
+
+
+
+          <div class="col-md-12">
+            <div class="alert alert-info">
+              <strong>Html To PDF Conversion - Angular 9</strong>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="table-responsive">
+              <table id="tbl1" class="table">
+                <tr>
+                  <th>Column1</th>
+                  <th>Column2</th>
+                  <th>Column3</th>
+                </tr>
+                <tr>
+                  <td>Row 1</td>
+                  <td>Row 1</td>
+                  <td>Row 1</td>
+                </tr>
+                <tr>
+                  <td>Row 2</td>
+                  <td>Row 2</td>
+                  <td>Row 2</td>
+                </tr>
+                <tr>
+                  <td>Row 3</td>
+                  <td>Row 3</td>
+                  <td>Row 3</td>
+                </tr>
+                <tr>
+                  <td>Row 4</td>
+                  <td>Row 4</td>
+                  <td>Row 4</td>
+                </tr>
+                <tr>
+                  <td>Row 5</td>
+                  <td>Row 5</td>
+                  <td>Row 5</td>
+                </tr>
+
+              </table>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div style="">
+              <h3>chart </h3>
+              <p-chart type="line" [data]="data" [options]="options"></p-chart>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="colmd-12">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            <strong>Html To PDF Conversion - 10</strong>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h2>Content</h2>
+          <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+            hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+            ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+            consequatur id iste ut iure.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table id="tbl1" class="table">
+              <tr>
+                <th>Column1</th>
+                <th>Column2</th>
+                <th>Column3</th>
+              </tr>
+              <tr>
+                <td>Row 1</td>
+                <td>Row 1</td>
+                <td>Row 1</td>
+              </tr>
+              <tr>
+                <td>Row 2</td>
+                <td>Row 2</td>
+                <td>Row 2</td>
+              </tr>
+              <tr>
+                <td>Row 3</td>
+                <td>Row 3</td>
+                <td>Row 3</td>
+              </tr>
+              <tr>
+                <td>Row 4</td>
+                <td>Row 4</td>
+                <td>Row 4</td>
+              </tr>
+              <tr>
+                <td>Row 5</td>
+                <td>Row 5</td>
+                <td>Row 5</td>
+              </tr>
+              <tr>
+                <td>Row 6</td>
+                <td>Row 6</td>
+                <td>Row 6</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div style="">
+            <h3>chart </h3>
+            <p-chart type="line" [data]="data" [options]="options"></p-chart>
+          </div>
+        </div>
+
+
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            <strong>Html To PDF Conversion - Angular 11</strong>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h2>Content</h2>
+          <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+            hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+            ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+            consequatur id iste ut iure.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table id="tbl1" class="table">
+              <tr>
+                <th>Column1</th>
+                <th>Column2</th>
+                <th>Column3</th>
+              </tr>
+              <tr>
+                <td>Row 1</td>
+                <td>Row 1</td>
+                <td>Row 1</td>
+              </tr>
+              <tr>
+                <td>Row 2</td>
+                <td>Row 2</td>
+                <td>Row 2</td>
+              </tr>
+              <tr>
+                <td>Row 3</td>
+                <td>Row 3</td>
+                <td>Row 3</td>
+              </tr>
+              <tr>
+                <td>Row 4</td>
+                <td>Row 4</td>
+                <td>Row 4</td>
+              </tr>
+              <tr>
+                <td>Row 5</td>
+                <td>Row 5</td>
+                <td>Row 5</td>
+              </tr>
+              <tr>
+                <td>Row 6</td>
+                <td>Row 6</td>
+                <td>Row 6</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div style="">
+            <h3>chart </h3>
+            <p-chart type="line" [data]="data" [options]="options"></p-chart>
+          </div>
+        </div>
+
+
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            <strong>Html To PDF Conversion - 12</strong>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table id="tbl1" class="table">
+              <tr>
+                <th>Column1</th>
+                <th>Column2</th>
+                <th>Column3</th>
+              </tr>
+              <tr>
+                <td>Row 1</td>
+                <td>Row 1</td>
+                <td>Row 1</td>
+              </tr>
+              <tr>
+                <td>Row 2</td>
+                <td>Row 2</td>
+                <td>Row 2</td>
+              </tr>
+              <tr>
+                <td>Row 3</td>
+                <td>Row 3</td>
+                <td>Row 3</td>
+              </tr>
+              <tr>
+                <td>Row 4</td>
+                <td>Row 4</td>
+                <td>Row 4</td>
+              </tr>
+              <tr>
+                <td>Row 5</td>
+                <td>Row 5</td>
+                <td>Row 5</td>
+              </tr>
+              <tr>
+                <td>Row 6</td>
+                <td>Row 6</td>
+                <td>Row 6</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div style="">
+            <h3>chart </h3>
+            <p-chart type="line" [data]="data" [options]="options"></p-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="col-md-12">
+      <div class="alert alert-info">
+        <strong>Html To PDF Conversion - Angular 13</strong>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <h2>Content</h2>
+      <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+        hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+        ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+        consequatur id iste ut iure.</p>
+    </div>
+    <div class="col-md-6">
+      <div class="table-responsive">
+        <table id="tbl1" class="table">
+          <tr>
+            <th>Column1</th>
+            <th>Column2</th>
+            <th>Column3</th>
+          </tr>
+          <tr>
+            <td>Row 1</td>
+            <td>Row 1</td>
+            <td>Row 1</td>
+          </tr>
+          <tr>
+            <td>Row 2</td>
+            <td>Row 2</td>
+            <td>Row 2</td>
+          </tr>
+          <tr>
+            <td>Row 3</td>
+            <td>Row 3</td>
+            <td>Row 3</td>
+          </tr>
+          <tr>
+            <td>Row 4</td>
+            <td>Row 4</td>
+            <td>Row 4</td>
+          </tr>
+          <tr>
+            <td>Row 5</td>
+            <td>Row 5</td>
+            <td>Row 5</td>
+          </tr>
+          <tr>
+            <td>Row 6</td>
+            <td>Row 6</td>
+            <td>Row 6</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div style="">
+        <h3>chart </h3>
+        <p-chart type="line" [data]="data" [options]="options"></p-chart>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="alert alert-info">
+        <strong>Html To PDF Conversion - Angular 14</strong>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <h2>Content</h2>
+      <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+        hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+        ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+        consequatur id iste ut iure.</p>
+    </div>
+    <div class="col-md-6">
+      <div class="table-responsive">
+        <table id="tbl1" class="table">
+          <tr>
+            <th>Column1</th>
+            <th>Column2</th>
+            <th>Column3</th>
+          </tr>
+          <tr>
+            <td>Row 1</td>
+            <td>Row 1</td>
+            <td>Row 1</td>
+          </tr>
+          <tr>
+            <td>Row 2</td>
+            <td>Row 2</td>
+            <td>Row 2</td>
+          </tr>
+          <tr>
+            <td>Row 3</td>
+            <td>Row 3</td>
+            <td>Row 3</td>
+          </tr>
+          <tr>
+            <td>Row 4</td>
+            <td>Row 4</td>
+            <td>Row 4</td>
+          </tr>
+          <tr>
+            <td>Row 5</td>
+            <td>Row 5</td>
+            <td>Row 5</td>
+          </tr>
+          <tr>
+            <td>Row 6</td>
+            <td>Row 6</td>
+            <td>Row 6</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div style="">
+        <h3>chart </h3>
+        <p-chart type="line" [data]="data" [options]="options"></p-chart>
+      </div>
+    </div>
+
+
+    <div class="col-md-12">
+      <div class="alert alert-info">
+        <strong>Html To PDF Conversion - Angular 15</strong>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <h2>Content</h2>
+      <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+        hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+        ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+        consequatur id iste ut iure.</p>
+    </div>
+    <div class="col-md-6">
+      <div class="table-responsive">
+        <table id="tbl1" class="table">
+          <tr>
+            <th>Column1</th>
+            <th>Column2</th>
+            <th>Column3</th>
+          </tr>
+          <tr>
+            <td>Row 1</td>
+            <td>Row 1</td>
+            <td>Row 1</td>
+          </tr>
+          <tr>
+            <td>Row 2</td>
+            <td>Row 2</td>
+            <td>Row 2</td>
+          </tr>
+          <tr>
+            <td>Row 3</td>
+            <td>Row 3</td>
+            <td>Row 3</td>
+          </tr>
+          <tr>
+            <td>Row 4</td>
+            <td>Row 4</td>
+            <td>Row 4</td>
+          </tr>
+          <tr>
+            <td>Row 5</td>
+            <td>Row 5</td>
+            <td>Row 5</td>
+          </tr>
+          <tr>
+            <td>Row 6</td>
+            <td>Row 6</td>
+            <td>Row 6</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div style="">
+        <h3>chart </h3>
+        <p-chart type="line" [data]="data" [options]="options"></p-chart>
+      </div>
+    </div>
+
+
+    <div class="col-md-12">
+      <div class="alert alert-info">
+        <strong>Html To PDF Conversion - Angular 16</strong>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <h2>Content</h2>
+      <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+        hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+        ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+        consequatur id iste ut iure.</p>
+    </div>
+    <div class="col-md-6">
+      <div class="table-responsive">
+        <table id="tbl1" class="table">
+          <tr>
+            <th>Column1</th>
+            <th>Column2</th>
+            <th>Column3</th>
+          </tr>
+          <tr>
+            <td>Row 1</td>
+            <td>Row 1</td>
+            <td>Row 1</td>
+          </tr>
+          <tr>
+            <td>Row 2</td>
+            <td>Row 2</td>
+            <td>Row 2</td>
+          </tr>
+          <tr>
+            <td>Row 3</td>
+            <td>Row 3</td>
+            <td>Row 3</td>
+          </tr>
+          <tr>
+            <td>Row 4</td>
+            <td>Row 4</td>
+            <td>Row 4</td>
+          </tr>
+          <tr>
+            <td>Row 5</td>
+            <td>Row 5</td>
+            <td>Row 5</td>
+          </tr>
+          <tr>
+            <td>Row 6</td>
+            <td>Row 6</td>
+            <td>Row 6</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div style="">
+        <h3>chart </h3>
+        <p-chart type="line" [data]="data" [options]="options"></p-chart>
+      </div>
+    </div>
+
+
+    <div class="col-md-12">
+      <div class="alert alert-info">
+        <strong>Html To PDF Conversion - Angular 17</strong>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <h2>Content</h2>
+      <p>Repellendus ad eos excepturi aut porro ratione fugit inventore debitis itaque earum dolor eius aut ut
+        hic qui velit voluptas corporis aut provident sed sint eum dicta necessitatibus in rerum accusantium
+        ipsam quidem ea velit aliquam asperiores est sit consequatur nam tempore quos adipisci illum
+        consequatur id iste ut iure.</p>
+    </div>
+    <div class="col-md-6">
+      <div class="table-responsive">
+        <table id="tbl1" class="table">
+          <tr>
+            <th>Column1</th>
+            <th>Column2</th>
+            <th>Column3</th>
+          </tr>
+          <tr>
+            <td>Row 1</td>
+            <td>Row 1</td>
+            <td>Row 1</td>
+          </tr>
+          <tr>
+            <td>Row 2</td>
+            <td>Row 2</td>
+            <td>Row 2</td>
+          </tr>
+          <tr>
+            <td>Row 3</td>
+            <td>Row 3</td>
+            <td>Row 3</td>
+          </tr>
+          <tr>
+            <td>Row 4</td>
+            <td>Row 4</td>
+            <td>Row 4</td>
+          </tr>
+          <tr>
+            <td>Row 5</td>
+            <td>Row 5</td>
+            <td>Row 5</td>
+          </tr>
+          <tr>
+            <td>Row 6</td>
+            <td>Row 6</td>
+            <td>Row 6</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div style="">
+        <h3>chart </h3>
+        <p-chart type="line" [data]="data" [options]="options"></p-chart>
+      </div>
+    </div> -->
+
+  </div>
+  <div class="row" id="footerPart" *ngIf="isShow" style="margin-top:20px">
+      <div class="col-md-12">
+        <app-footer></app-footer>
+      </div>
+    </div>
+</div>
+<!-- <div id="content" #content>  
+
+  
+  <div class="table-responsive">  
+    <input type="button" value="CPTURE" (click)="captureScreen()"/>  
+  </div>  
+
+</div>   -->
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">  
+        <div class="row" >
+            <div class="col-md-12 text-right">
+                <button type="button" class="btn btn-default" value="Print" (click)="capture2Popup()">Print</button>
+            </div>
+            <div class="col-md-12"  id="headerPartPopup">
+              <app-header></app-header>
+            </div>
+          </div>
+    </div>
+    <div class="modal-body">
+      <div class="row" id="contentTopopup">
+          <div class=" col-md-12 ">
+        
+
+            <div class="row marginbtm10">
+                <div class="col-md-12">
+                    <div class="main-column row justify-content-between"> 
+                      <div class="col-sm-6">
+                        <div class="row">
+                          <div class="col-sm-2">
+                          <img class="left-header" src="../assets/images/sample-report.png" alt="Sample Report">
+                          </div>
+                          <div class="col-sm-9">
+                            <div class="">
+                                <div class="column hd-blod">Sample Report</div>
+                                <div class="column hd-text">Industry (Financial Services)</div>
+                                <div  class="column  hd-text">Country (USA)</div>
+                            </div>
+                       
+                        </div>
+                      </div>
+      
+                      </div>
+                      <div class="col-sm-4 col-offset-sm-2">
+                          <img class="right-header " src="../assets/images/threat.png" alt="Threat Beta">
+      
+                      
+      
+                          <img class="right-header1" src="../assets/images/New Project.png" alt="Threat Beta">
+                      </div>
+                          
+                        
+                    </div> 
+                    
+                </div>
+                <div class="col-md-12">
+                    <div style="margin: 15px 0;">
+                      <h3>chart </h3>
+                      <p-chart type="line"  height="100"  [data]="data" [options]="options"></p-chart>
+                    </div>
+                  </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-3">
+                    <h1 class="number-head">280</h1>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="head-text">Number of Vulnerabilities?</div>
+                    <div class="caption-text">Number of known vulnerable technologies that could impact threat beta </div>
+                    <div class="border-btm"></div>
+                  </div>
+                </div>
+      
+                <div class="row">
+                  <div class="col-md-3">
+                     <h1 class="number-head">6</h1>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="head-text">Potential Exploits?</div>
+                    <div class="caption-text">Number of known vulnerabilities that assailants can exploit</div>
+                    <div class="border-btm"></div>
+                  </div>
+                </div>
+      
+                <div class="row">
+                  <div class="col-md-3">
+                     <h1 class="number-head">0.9</h1>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="head-text">Likelihood of attack?</div>
+                    <div class="caption-text">Frequency of a cyber breach and/or BI Event affecting this organization during the next 12 months </div>
+                    <div class="border-btm"></div>
+                  </div>
+                </div>
+      
+      
+                <div class="row">
+                  <div class="col-md-3">
+                     <h1 class="number-head">$1.8M</h1>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="head-text">Severity of financial losses?</div>
+                    <div class="caption-text">Median probable loss</div>
+                    <div class="border-btm"></div>
+                  </div>
+                </div>
+      
+      
+                <div class="row">
+                  <div class="col-md-3">
+                     <h1 class="number-head">250K</h1>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="head-text">Recommended Investments?</div>
+                    <div class="caption-text">This is the amount of money that will greatly reduce overall threat beta and return the higher ROI</div>
+                    <div class="border-btm"></div>
+                  </div>
+                </div>
+      
+                <div class="row">
+                  <div class="col-md-3">
+                     <h1 class="number-head">37%</h1>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="head-text">Estimated ROI?</div>
+                    <div class="caption-text">Return on investment from spending the estimated budget amount to lower the threat beta </div>
+                    <div class="border-btm"></div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="method-note">
+                      <h4>Methodology Note</h4>
+                      <p>Cybeta uses relative risks criteria to evaluate enterprises from an attackers point of view. This technique generates actionable recommendations for any public, private, or foreign company in the world in near real time.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+      
+      
+              </div>
+      
+              <div class="col-md-6">
+                  <div class="row summary-panel">
+                    <div class="col-md-12">
+                        <div class="cont-cls">
+                          <div class="title-cont"><h4>Summary</h4></div>
+                          <div class="header-cont">
+                            <h4>Vulnerabilities:</h4>
+                          </div>
+                          <div class="cont-text">
+                              A Threat Beta of 1.6 means that Sample is at a high risk of cyber attack. The likelihood of an attack happening in the next 12 months is 0.9. The potential losses from a large attack is $1,800,000. Over the last four years, Sample’s Threat Beta score has gone up from 0.6 to 1.6.
+                          </div>
+      
+                          <div class="header-cont">
+                              <h4>Mitigation:</h4>
+                            </div>
+                            <div class="cont-text">
+                                Sample has 280 vulnerabilities. Spending $250,000 could help to lower Sample’s threat score enough to reduce uninsurable losses from $1,800,000 to $300,000 and produce a 37% return on investment.
+                            </div>
+      
+      
+                            <div class="header-cont">
+                                <h4>Urgency:</h4>
+                              </div>
+                              <div class="cont-text">
+                                  Recent dark web chatter indicated that 9 of Sample’s 280 total vulnerabilities could be exploited in the next 12 months. The insurance mitigation recommendations will take one month to implement while the investments will take 6 months to implement. 
+                              </div>
+                        </div>
+                    </div>
+                  </div>
+      
+              </div>
+      
+            </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row" id="footerPartPopup" style="margin-top:20px">
+            <div class="col-md-12">
+              <app-footer></app-footer>
+            </div>
+          </div>
+    </div>
+  </ng-template>

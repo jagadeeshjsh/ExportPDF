@@ -1,0 +1,64 @@
+.wrap {
+    margin: 0 auto;
+    width: auto;
+    max-width: 100%;
+    font-family: "Arial Bold", Arial, sans-serif;
+    background-color: #427eb8;
+    color: #444444;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Arial Bold", Arial, sans-serif;
+    background-color: #444444;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+ 
+  
+  .pdf-header {
+    overflow: hidden;
+    margin-bottom: 0px;
+    padding-top: 10px;
+  }
+  .footer-logo {
+    height: 29px;
+    width: 260px;
+    float: right;
+}
+
+
+
+    .ft-3{
+      color: white;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      padding: 0 2px;
+      letter-spacing: 1px;
+        /* font-size: initial; */
+    }
+
+    .ft-2{
+        color: white; 
+        margin-bottom: 15px;
+        margin-left: 10px;
+        /* font-size: initial; */
+
+    }
+    .ft-1{
+        color: white; 
+        /* font-size: initial; */
+    }
+  
+  
+    .pdf-footer {
+      font-size: 16px;
+  }
+  
+  

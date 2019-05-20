@@ -1,0 +1,141 @@
+p{
+    font-size: 19px;
+}
+
+.table{
+    border:1px solid #dee2e6;
+}
+
+
+@media print {
+    div[hidden] {
+        display: block;
+     }
+}
+
+.marginbtm10{
+    margin-bottom: 100px;
+}
+.marging4to6{
+    margin: 140px 0 100px 0;
+}
+.marging7to9{
+    margin: 70px 0 110px 0;
+}
+
+.header-cls{
+    height: 40px;
+    background: #daa;
+    width: 100%;
+}
+
+.head-text{
+    font-size: 20pt;
+    font-weight: bold;
+    color: rgb(46, 66, 99);
+}
+
+.caption-text{
+    font-size: 16px;
+    color: #585555;
+    font-weight: 600;
+    margin-top: -5px;
+}
+
+.number-head{
+    color: #4673c1f2;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.border-btm{
+    font-size: 12px;
+    color: darkgrey;
+    font-weight: 600;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #b9b4b494;
+    margin-bottom:40Px;
+    border-block-start-width: 5px;
+    width: 40%;
+}
+
+
+.summary-panel{
+   
+}
+
+.cont-cls{
+    background: #1f3966;
+    color: #fff;
+    padding: 15px 15px 180px 15px;
+}
+.title-cont {
+    color: #8ba9dc;
+}
+.cont-text {
+    font-size: 17px;
+    line-height: 21px;
+}
+
+.header-cont{
+    margin: 64px 0;
+}
+.method-note {
+    background: #e8eff7;
+    color: #5a5a5a;
+    font-size: 12px;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.method-note p{
+    font-size: 14px;
+}
+img.right-header{
+    /* float: right; */
+    width: 37%;
+    /* margin-left: 30px; */
+}
+img.right-header1{
+    width: 63%;
+}
+
+
+.graph{
+    margin-left: 100px;
+    width: 100%;
+}
+.hd-blod{
+    font-weight: 700;
+    font-size: 25px; 
+    color: #527eca;
+}
+.chartjs-render-monitor{
+    height: 405px !important;
+}
+
+.hd-text{
+    color: #8f8f8f;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.marginbtm20{
+    margin-top:400px;
+}
+/* .modalClass{
+    width: 100px;
+    border: 1px solid red;
+}
+
+.modalClass > .modal-dialog {
+    max-width: 1490px !important;
+    min-width: 971px !important;   
+    width: 95% !important;
+} */
+
+.left-header{
+    float: left;
+    width: 60px;
+}

@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Arial Bold", Arial, sans-serif;
+    background-color: #444444;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .wrap {
+    margin: 0 auto;
+    width: 1120px !important;
+    max-width: 95%;
+    font-family: "Arial Bold", Arial, sans-serif;
+    background-color: #fff;
+    color: #444444;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .textblock {
+    background-color: #eaeaea;
+    padding: 20px;
+  }
+  ul {margin-left: 20px;}
+  h2 {margin-bottom: 10px; margin-top: 20px}
+  p {margin-bottom: 5px;}
+ 
+  
+  .pdf-header {
+    overflow: hidden;
+    margin-bottom: 0px;
+    padding-top: 20px;
+  }
+  
+    .pdf-logo {
+      height: 45px;
+      width: 260px;
+      float: right;  
+    }
+    
+    .pdf-1 {
+      height: 45px;
+      width: 260px;
+      float: right;
+    }
+
+    img {
+      margin-left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      position: relative;
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain; 
+      object-position: 0 50%;
+    }
+    
+    .pdf-title {
+      font-size: 20px;
+      font-weight: bold;
+      height: 75px;
+      line-height: 40px;
+      float: left;
+      color: #427eb8;
+      margin-right: 20px;
+    }
+
+
+      .pdf-center-title {
+        font-size: 20px;
+    font-weight: bold;
+    height: 91px;
+    line-height: 50px;
+    margin-right: 28px;
+    margin-left: -120px;
+      }
